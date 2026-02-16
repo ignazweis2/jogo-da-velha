@@ -1,11 +1,11 @@
-# Jogo da Velha
-![Imagem do jogo da velha.](./jogo-da-velha.png)
-## Criar o executável
-Crie o executável com make (dependências necessárias: make e gcc):
+# Tic-Tac-Toe
+![Image of the Tic-Tac-Toe game.](./tic-tac-toe.png)
+## Build the executable
+Create the executable using make (required dependencies: make and gcc):
 
     $ make
     
-Ou só com gcc (dependência: gcc):
+Or compile it directly with gcc (required dependency: gcc):
 
-    $ gcc -Wall jogo-da-velha.c -o jogo-da-velha
+    $ gcc -Wall tic-tac-toe.c -o tic-tac-toe
 
