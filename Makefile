@@ -1,20 +1,20 @@
-# executável
-TARGET = jogo-da-velha
+# executable
+TARGET = tic-tac-toe
 
-# compilador
+# compiler
 CC = gcc
 
-# flags de compilação
+# compilation flags
 CFLAGS = -Wall
 
-# arquivos .c
-SRC = jogo-da-velha.c
+# .c files
+SRC = tic-tac-toe.c
 
 all: $(TARGET)
 
 $(TARGET): $(SRC)
-	$(CC) $(CFLAGS) $(SRC) -o $(TARGET) 
+	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
 
-# limpar arquivos gerados
+# clean generated files
 clean:
 	rm -f $(TARGET)
