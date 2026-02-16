@@ -1,6 +1,6 @@
 /*
-É esperado que eu refaça esse código e melhore as funcionalidades,
-tornando-o o mais eficiente.
+It is expected that I will rewrite this code and improve its features,
+making it as efficient as possible.
 */
 
 #include <stdio.h>
@@ -11,35 +11,35 @@ char change_player(char player);
 
 int main (void)
 {
-    // váriaveis criadas na memória.
+    // variables created in memory.
     char p[9], player;
     bool win = false, stop_move = false;
     int move = 0, buff;
     
-    // adiciona um ponto em cada posição do jogo da velha.
+    // add a dot in each position of the tic-tac-toe board.
     for (int i = 0; i < 9; i++)
     {
         p[i] = '.';
     }
 
-    // escolha o jogador.
-    printf("Qual jogador escolhido primeiro? [O/X]\n");
+    // choose the starting player.
+    printf("Which player goes first? [O/X]\n");
     printf("> ");
     scanf("%1c", &player);
     getchar();
     printf("\n");
     player = toupper(player);
 
-    // verificar se escolha do jogador é válida.
+    // check if the chosen player is valid.
     if (player != 'X' && player != 'O')
     {
-        printf("\nJogador inválido.\n\n");
+        printf("\nInvalid player.\n\n");
         return 1;
     }
 
     while (true)
     {
-        // mostre o jogo da velha.
+        // display the tic-tac-toe board.
         printf("  ╔═══╤═══╤═══╗\n");
         printf("  ║ %c │ %c │ %c ║  1   2   3\n", p[0], p[1], p[2]);
         printf("  ╟───┼───┼───╢\n");
@@ -53,38 +53,38 @@ int main (void)
             printf("[%c] player\n", player);
         }
 
-        // verificação se alguém ganhou ou perdeu.
+        // check if someone has won or if the game ended.
         if (win == true)
         {
-           // trocar o jogador.
+            // switch the player.
             player = change_player(player);
 
-            printf("[%c] ganhou!", player);
+            printf("[%c] won!", player);
             printf("\n\n");
             return 0;
         }
         else if (move == 9)
         {
-            printf("Vocês empataram!");
+            printf("It's a draw!");
             printf("\n\n");
             return 0;
         }
 
         printf("> ");
 
-        // coloque a opção no buffer.
+        // store the option in the buffer.
         scanf("%1i", &buff);
         getchar();
         printf("\n");
 
-        // criar opções no n[9] de 1 a 9.
+        // create options in n[9] from 1 to 9.
         int n[9];
         for (int i = 0; i < 9; i++)
         {
             n[i] = i + 1;
         }
 
-        // mude o jogo da velha para refletir a opção dada anteriormente.
+        // update the board to reflect the chosen option.
         stop_move = true;
         for (int i = 0; i < 9; i++)
         {
@@ -96,7 +96,7 @@ int main (void)
             }
         }
 
-        // se a jogada é inválida exiba a mensagem.
+        // if the move is invalid, display a message.
         if (stop_move == true)
         {
             printf("\n");
@@ -104,13 +104,13 @@ int main (void)
             printf("\n\n");
         }
 
-        // caso alguém ganhe finalize o while com a variável win.
+        // if someone wins, end the loop using the win variable.
         win = calc(p, player, move);
 
-        // trocar o jogador.
+        // switch the player.
         player = change_player(player);
 
-        // adicionar a quantidade de rodadas.
+        // increment the number of rounds.
         if (stop_move == false)
         {
             move++;
@@ -137,9 +137,9 @@ int calc(char p[], char player, int move)
 
             (p[0] == player && p[4] == player && p[8] == player) ||
             (p[6] == player && p[4] == player && p[2] == player))
-        {
-            return 1;
-        }
+            {
+                return 1;
+            }
     }
     return 0;
 }
