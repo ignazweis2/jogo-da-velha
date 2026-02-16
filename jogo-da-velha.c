@@ -125,148 +125,20 @@ int main (void)
 
 int calc(char p[], char player, int move)
 {
-    // Micro-otimização inútil. Tentando impedir vários "if" de serem executados sem necessidade.
-    static bool full_line[8];
     if (move >= 4)
     {
-        if (p[4] == player)
-        {
-            // 2
-            if (full_line[1] == 0)
-            {
-                if (p[3] == player)
-                {
-                    if (p[5] == player)
-                    {
-                        return 1;
-                    }
-                    else if (p[5] != '.')
-                    {
-                        full_line[1] = 1;
-                    }
-                }
-            }
-            // 5
-            if (full_line[4] == 0)
-            {
-                if (p[1] == player)
-                {
-                    if (p[7] == player)
-                    {
-                        return 1;
-                    }
-                    else if (p[7] != '.')
-                    {
-                        full_line[4] = 1;
-                    }
-                }
-            }
-            // 7
-            if (full_line[6] == 0)
-            {
-                if (p[0] == player)
-                {
-                    if (p[8] == player)
-                    {
-                        return 1;
-                    }
-                    else if (p[8] != '.')
-                    {
-                        full_line[6] = 1;
-                    }
-                }
-            }
-            // 8
-            if (full_line[7] == 0)
-            {
-                if (p[6] == player)
-                {
-                    if (p[2] == player)
-                    {
-                        return 1;
-                    }
-                    else if (p[2] != '.')
-                    {
-                        full_line[7] = 1;
-                    }
-                }
-            }
-        }
+        if ((p[0] == player && p[1] == player && p[2] == player) ||
+            (p[3] == player && p[4] == player && p[5] == player) ||
+            (p[6] == player && p[7] == player && p[8] == player) ||
 
-        // 1
-        if (full_line[0] == 0)
-        {
-            if (p[1] == player)
-            {
-                if (p[0] == player)
-                {
-                    if (p[2] == player)
-                    {
-                        return 1;
-                    }
-                    else if (p[2] != '.')
-                    {
-                        full_line[0] = 1;
-                    }
-                }
-            }
-        }
+            (p[0] == player && p[3] == player && p[6] == player) ||
+            (p[1] == player && p[4] == player && p[7] == player) ||
+            (p[2] == player && p[5] == player && p[8] == player) ||
 
-        // 6
-        if (full_line[5] == 0)
+            (p[0] == player && p[4] == player && p[8] == player) ||
+            (p[6] == player && p[4] == player && p[2] == player))
         {
-            if (p[5] == player)
-            {
-                if (p[2] == player)
-                {
-                    if (p[8] == player)
-                    {
-                        return 1;
-                    }
-                    else if (p[8] != '.')
-                    {
-                        full_line[5] = 1;
-                    }
-                }
-            }
-        }
-
-        // 3
-        if (full_line[2] == 0)
-        {
-            if (p[7] == player)
-            {
-                if (p[6] == player)
-                {
-                    if (p[8] == player)
-                    {
-                        return 1;
-                    }
-                    else if (p[8] != '.')
-                    {
-                        full_line[2] = 1;
-                    }
-                }
-            }
-        }
-
-        // 4
-        if (full_line[3] == 0)
-        {
-            if (p[3] == player)
-            {
-                if (p[0] == player)
-                {
-                    if (p[6] == player)
-                    {
-                        return 1;
-                    }
-                    else if (p[6] != '.')
-                    {
-                        full_line[3] = 1;
-                    }
-                }
-            }
+            return 1;
         }
     }
     return 0;
